@@ -57,16 +57,20 @@ studnet* ucitavanje(char ime_fajla[30]){
 
 
     for(int i = 0; i < n ; i++){
-        printf(" i=%d \n",i);
+        // printf(" i=%d \n",i);
         studnet* temp;
-        temp = malloc(sizeof(studnet*));
-        printf("a i=%d \n",i);
+        temp = malloc(sizeof(studnet));
+        //temp->ime = malloc(sizeof(char) * 30);
+        // temp->prezime = malloc(sizeof(char) * 30 );
+        // temp->index = malloc(sizeof(char) * 7);
+        
+        // printf("a i=%d \n",i);
         fscanf(f, "%s", temp->ime);
-        printf("b i=%d \n",i);
+        // printf("b i=%d \n",i);
         fscanf(f, "%s", temp->prezime);
-        printf("c i=%d \n",i);
+        // printf("c i=%d \n",i);
         fscanf(f, "%s", temp->index);
-        printf("d i=%d \n",i);
+        // printf("d i=%d \n",i);
 
         // fgets(temp->ime, 30, f);
         //  printf("b i=%d \n",i);
@@ -75,10 +79,10 @@ studnet* ucitavanje(char ime_fajla[30]){
         // fgets(temp->index, 10, f);
         //  printf("d i=%d \n",i);
 
-        printf("procitali smo element kad je i= %d\n",i);
-        ispisi_studenta(temp);
+        // printf("procitali smo element kad je i= %d\n",i);
+        // ispisi_studenta(temp);
         ubaci_element(&prvi, temp);
-        printf("Ubacili smo elem kad je i=%d\n",i);
+        // printf("Ubacili smo elem kad je i=%d\n",i);
     }
 
     return prvi;
@@ -92,10 +96,10 @@ int main(){
 
     studnet* koren;
 
-   koren = ucitavanje("studenti.dat");
+    koren = ucitavanje("studenti.dat");
    
-// printf("krece ispis\n");
-   ispis(koren);
+    printf("krece ispis\n");
+    ispis(koren);
 
 
 
