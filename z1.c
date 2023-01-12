@@ -13,20 +13,21 @@ typedef struct  studnet
 
 void ubaci_element(studnet** koren, studnet* novi){
     
-    if (*koren == NULL)
+    if (*koren == NULL || strcmp(novi->prezime, (*koren)->prezime) <= 0)
     {
+        // *koren = novi;
+        // (*koren)->sledeci = NULL;
+        novi->sledeci = *koren;
         *koren = novi;
-        (*koren)->sledeci = NULL;
     }else{
-        studnet* temp = *koren;
-        while ((*koren)->sledeci != NULL && 0 > (strcmp( temp->sledeci->prezime , novi->prezime ) ))
+        studnet** temp = koren;
+        while ( (*temp)->sledeci != NULL && 0 > (strcmp( (*temp)->sledeci->prezime , novi->prezime ) ))
         {
-           temp =  temp->sledeci;
+           temp =  &(*temp)->sledeci;
         }
-        
 
-        novi->sledeci = temp->sledeci;
-        temp->sledeci = novi;
+        novi->sledeci = (*temp)->sledeci;
+        (*temp)->sledeci = novi;
        
         
     }
