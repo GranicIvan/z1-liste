@@ -12,23 +12,24 @@ typedef struct  studnet
 }studnet;
 
 void ubaci_element(studnet** koren, studnet* novi){
-
+    
     if (*koren == NULL)
     {
         *koren = novi;
         (*koren)->sledeci = NULL;
     }else{
-        while ((*koren)->sledeci != NULL && 0 > (strcmp( (*koren)->sledeci->prezime , novi->prezime ) ))
+        studnet* temp = *koren;
+        while ((*koren)->sledeci != NULL && 0 > (strcmp( temp->sledeci->prezime , novi->prezime ) ))
         {
-           *koren =  (*koren)->sledeci;
+           temp =  temp->sledeci;
         }
-        studnet* temp = (*koren)->sledeci;
-        //temp = (*koren)->sledeci;
-        (*koren)->sledeci = novi;
-        novi->sledeci = temp;
+        
+
+        novi->sledeci = temp->sledeci;
+        temp->sledeci = novi;
+       
         
     }
-    
 }
 
 void ispisi_studenta(studnet* studnet){
